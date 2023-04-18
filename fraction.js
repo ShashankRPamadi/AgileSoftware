@@ -1,4 +1,4 @@
-//sub 2 fractions
+//Fractions
 const prompt = require('prompt-sync')();
 
 class Fraction
@@ -7,6 +7,13 @@ class Fraction
   {
     this.numerator = numerator;
     this.denominator = denominator;
+  }
+  add(f)
+  {
+    let den = this.denominator * f.denominator;
+    let num= this.numerator * f.denominator + this.denominator * f.numerator ;
+    let g =gcd(num,den);
+   return new fraction(num/g,den/g);
   }
   subtraction(f)
   {
