@@ -8,12 +8,12 @@ class Fraction
     this.numerator = numerator;
     this.denominator = denominator;
   }
-  add(f)
+  addition(f)
   {
     let den = this.denominator * f.denominator;
     let num= this.numerator * f.denominator + this.denominator * f.numerator ;
     let g =gcd(num,den);
-   return new fraction(num/g,den/g);
+   return new Fraction(num/g,den/g);
   }
   subtraction(f)
   {
@@ -33,6 +33,7 @@ class Fraction
   {
     let den = this.denominator / f.denominator;
     let num = (this.numerator * f.denominator) / (this.denominator * f.numerator);
+    let g = gcd(num,den);
     return new Fraction(num, den);
   }
   compare(f) 
@@ -63,35 +64,30 @@ function gcd(a,b)
   return a;
 }
 
-function input_fraction()
-{
-  let n=parseInt(prompt("Enter the number of fractions: "));
-  let arr=[];
-  for(let i=0; i<n; i++)
-    {
-      let num = parseFloat(prompt("Enter the numerator: "));
-      let den = parseFloat(prompt("Entert the denominator: "));
-      let f = new Fraction(num,den);
-      arr.push(f);
-    }
-  return arr;
+function inputFraction() {
+  let numerator = parseInt(prompt("Enter numerator: "));
+  let denominator = parseInt(prompt("Enter denominator: "));
+  return new Fraction(numerator, denominator);
 }
 
-function subtraction(arr)
-{
-  let sub = arr[0];
-  for(let i=1; i<arr.length;i++)
-    {
-      sub = sub.subtraction(arr[i]);
-    }
-  return sub;
+function output(f1, f2, result, operator) {
+  console.log(`The ${operator} of two fractions is ${result.numerator}/${result.denominator}`);
+  console.log(`Comparison: ${f1.compare(f2)}`);
 }
 
 function main()
 {
-  let arr = input_fraction();
-  let sub = subtraction(arr);
-  console.log("The subtraction of fraction is: ",sub.numerator + "/" + sub.denominator);
+  let f1 = inputFraction();
+  let f2 = inputFraction();
+  let sub = f1.subtraction(f2);
+  let add = f1.addition(f2);
+  let multi = f1.multiply(f2);
+  let div = f1.division(f2);
+  
+  output(f1, f2, add, "addition");
+  output(f1, f2, sub, "subtraction");
+  output(f1, f2, multi, "multiplication");
+  output(f1, f2, div, "division");
 }
 
 main();
