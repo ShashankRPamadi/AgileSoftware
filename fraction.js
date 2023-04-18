@@ -22,11 +22,18 @@ class Fraction
     let g = gcd(num,den);
     return new Fraction(num/g,den/g);
   }
-  multiply(f){
+  multiply(f)
+  {
     let den =this.denominator*f.denominator;
     let num=this.numerator*f.numerator;
     let g = gcd(num,den);
     return new Fraction(num,den);
+  }
+  division(f)
+  {
+    let den = this.denominator / f.denominator;
+    let num = (this.numerator * f.denominator) / (this.denominator * f.numerator);
+    return new Fraction(num, den);
   }
   compare(f) 
   {
