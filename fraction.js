@@ -28,7 +28,21 @@ class Fraction
     let g = gcd(num,den);
     return new Fraction(num,den);
   }
+  compare(f) 
+  {
+    let decimal1 = this.numerator / this.denominator;
+    let decimal2 = f.numerator / f.denominator;
+    
+    if(decimal1 > decimal2) {
+      return 'Fraction 1 is greater than Fraction 2';
+    } else if(decimal1 < decimal2) {
+      return 'Fraction 2 is greater than Fraction 1';
+    } else {
+      return 'Both fractions are equal';
+    }
+  }
 }
+
 
 function gcd(a,b)
 {
