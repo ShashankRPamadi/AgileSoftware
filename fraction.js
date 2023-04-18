@@ -20,8 +20,13 @@ class Fraction
     let den = this.denominator * f.denominator;
     let num = this.numerator * f.denominator - f.numerator * this.denominator;
     let g = gcd(num,den);
-    console.log(g);
     return new Fraction(num/g,den/g);
+  }
+  multiply(f){
+    let den =this.denominator*f.denominator;
+    let num=this.numerator*f.numerator;
+    let g = gcd(num,den);
+    return new Fraction(num,den);
   }
 }
 
